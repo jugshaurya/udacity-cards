@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
 
@@ -8,7 +7,7 @@ class DeckListScreen extends Component {
   render() {
     return (
       <NavigationContainer>
-        {/* <Stack.Navigator initialRouteName="DeckListView">
+        <Stack.Navigator initialRouteName="DeckListView">
           <Stack.Screen
             options={{ title: "DeckListView" }}
             name="DeckListView"
@@ -34,7 +33,7 @@ class DeckListScreen extends Component {
             name="ScoreView"
             Component={ScoreView}
           />
-        </Stack.Navigator> */}
+        </Stack.Navigator>
       </NavigationContainer>
     );
   }

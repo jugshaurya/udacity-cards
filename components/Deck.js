@@ -10,3 +10,5 @@ const Deck = ({ deck, name }) => {
     </View>
   );
 };
+
+export default Deck;
