@@ -37,31 +37,42 @@ class NewQuestionView extends React.Component {
     const { question, answer } = this.state;
     return (
       <View style={styles.padding10}>
-        <Text style={styles.title}>Question: </Text>
-        <TextInput
-          style={styles.textinput}
-          onChangeText={(text) => this.setState({ question: text })}
-          value={question}
-          placeholder={"Enter a Yes/No Question"}
-        />
-        <Text style={styles.title}> Answer: </Text>
-        <TextInput
-          style={styles.textinput}
-          onChangeText={(text) => this.setState({ answer: text })}
-          value={answer}
-          keyboardType={"numeric"}
-          placeholder={"1 for true 0 for false"}
-        />
+        <View style={styles.outerBox}>
+          <Text style={styles.title}>Question: </Text>
+          <TextInput
+            style={styles.textinput}
+            onChangeText={(text) => this.setState({ question: text })}
+            value={question}
+            placeholder={"Enter a Yes/No Question"}
+          />
+          <Text style={styles.title}> Answer: </Text>
+          <TextInput
+            style={styles.textinput}
+            onChangeText={(text) => this.setState({ answer: text })}
+            value={answer}
+            keyboardType={"numeric"}
+            placeholder={"1 for true 0 for false"}
+          />
 
-        <TouchableOpacity onPress={this.handleSubmit} style={styles.btn}>
-          <Text>Add</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={this.handleSubmit} style={styles.btn}>
+            <Text>Add</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  outerBox: {
+    margin: 20,
+    padding: 30,
+    borderWidth: 2,
+    borderColor: "#364f6b",
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "flex-start",
+  },
   title: {
     padding: 10,
     paddingLeft: 0,
