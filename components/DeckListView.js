@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   smalltext: {
     marginTop: 10,
     fontSize: 18,
+    color: "#364f6b",
     fontWeight: "300",
   },
   bigtext: {

@@ -20,9 +20,10 @@ class NewQuestionView extends React.Component {
     const { dispatch, navigation, route } = this.props;
     const { question, answer } = this.state;
     if (question.trim().length === 0 || answer.trim().length === 0) return;
+    const deckId = route.params.deck.title;
 
     const questionDetails = {
-      deckId: route.params.title,
+      deckId,
       question,
       answer: Number(answer),
     };
