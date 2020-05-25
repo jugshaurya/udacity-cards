@@ -1,22 +1,29 @@
-import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from "./actionTypes";
+import actionTypes from "./actionTypes";
 
-export function receiveDecks(decks) {
+export const receiveDecks = (decks) => {
   return {
-    type: RECEIVE_DECKS,
+    type: actionTypes.RECEIVE_DECKS,
     payload: decks,
   };
-}
+};
 
-export function addDeck(deck) {
+export const addDeck = (deck) => {
   return {
-    type: ADD_DECK,
+    type: actionTypes.ADD_DECK,
     payload: deck,
   };
-}
+};
 
-export function addCard(questionDetails) {
+export const addCard = (questionDetails) => {
   return {
-    type: ADD_CARD,
+    type: actionTypes.ADD_CARD,
     payload: questionDetails,
   };
-}
+};
+
+export const deleteDeck = (deckId) => {
+  return {
+    type: actionTypes.DELETE_DECK,
+    payload: deckId,
+  };
+};
