@@ -1,46 +1,46 @@
 import React, { Component } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+
+import IndividualDeckView from "../components/IndividualDeckView";
+import NewQuestionView from "../components/NewQuestionView";
+import DeckListView from "../components/DeckListView";
+import ScoreView from "../components/ScoreView";
+import QuizView from "../components/QuizView";
+
 const Stack = createStackNavigator();
-
-import DeckListView from "./DeckListView";
-import IndividualDeckView from "./IndividualDeckView";
-import NewQuestionView from "./NewQuestionView";
-import QuizView from "./QuizView";
-import ScoreView from "./ScoreView";
-
-class DeckListScreen extends Component {
-  state = {};
-  render() {
-    return (
-      <Stack.Navigator initialRouteName="DeckListView">
-        <Stack.Screen
-          options={{ title: "DeckListView" }}
-          name="DeckListView"
-          component={DeckListView}
-        />
-        <Stack.Screen
-          name="IndividualDeckView"
-          component={IndividualDeckView}
-          options={{ title: "IndividualDeckView" }}
-        />
-        <Stack.Screen
-          options={{ title: "NewQuestionView" }}
-          name="NewQuestionView"
-          component={NewQuestionView}
-        />
-        <Stack.Screen
-          options={{ title: "QuizView" }}
-          name="QuizView"
-          component={QuizView}
-        />
-        <Stack.Screen
-          options={{ title: "ScoreView" }}
-          name="ScoreView"
-          component={ScoreView}
-        />
-      </Stack.Navigator>
-    );
-  }
-}
+const DeckListScreen = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="DeckListView"
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+    >
+      <Stack.Screen
+        options={{ title: "🃏 All Decks 🃏" }}
+        name="DeckListView"
+        component={DeckListView}
+      />
+      <Stack.Screen
+        options={{ title: "🃏 Deck 🃏" }}
+        name="IndividualDeckView"
+        component={IndividualDeckView}
+      />
+      <Stack.Screen
+        options={{ title: "➕ Add Question ➕" }}
+        name="NewQuestionView"
+        component={NewQuestionView}
+      />
+      <Stack.Screen
+        options={{ title: "🤹 Quiz 🤹" }}
+        name="QuizView"
+        component={QuizView}
+      />
+      <Stack.Screen
+        options={{ title: "🛹 Score 🛹" }}
+        name="ScoreView"
+        component={ScoreView}
+      />
+    </Stack.Navigator>
+  );
+};
 
 export default DeckListScreen;

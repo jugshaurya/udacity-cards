@@ -9,7 +9,6 @@ const IndividualDeckView = (props) => {
   const { dispatch, navigation } = props;
   const handleDeckDelete = () => {
     dispatch(deleteDeck(deck.title));
-
     navigation.navigate("DeckListView");
   };
 

@@ -29,3 +29,7 @@ Users should receive a notification to remind themselves to study if they haven'
 ```
   yarn start
 ```
+
+## Platform tested on :-
+
+- Web-Browser using expo start's(Run in web browser mode) and Android.

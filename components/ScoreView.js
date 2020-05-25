@@ -1,26 +1,28 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
-const ScoreView = ({ route }) => {
+const ScoreView = ({ route, navigation }) => {
   const { score, totalQuestions, deck } = route.params;
   const percentage = (score / totalQuestions) * 100;
 
   const handleStartQuiz = () => {
-    navigation.popToTop("QuizView", { deck: deck });
+    navigation.replace("QuizView", { deck: deck });
   };
   const handleGoingToIndividualView = () => {
-    navigation.popToTop("IndividualDeckView", { deck: deck });
+    navigation.navigate("IndividualDeckView", { deck: deck });
   };
 
   return (
     <View>
-      <Text>Score : {score}</Text>
+      <Text>
+        Score : {score} correct out of {totalQuestions}
+      </Text>
       <Text>Percentage : {percentage.toFixed(1)}%</Text>
       <TouchableOpacity onPress={handleStartQuiz}>
-        <Text>Start Quiz Over</Text>
+        <Text>Restart Quiz</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleGoingToIndividualView}>
-        <Text>Go Back</Text>
+        <Text>Back to Deck</Text>
       </TouchableOpacity>
     </View>
   );

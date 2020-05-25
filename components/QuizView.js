@@ -7,8 +7,8 @@ const QuizView = ({ route, navigation }) => {
   const [watch, setWatch] = useState(false); // watch answer
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const totalQuestions = deck.questions.length;
-
   if (currentQuestion >= totalQuestions) {
+    console.log("adf");
     navigation.navigate("ScoreView", {
       score: correctAnswer,
       totalQuestions,
@@ -20,8 +20,9 @@ const QuizView = ({ route, navigation }) => {
   const question = deck.questions[questionKey].question;
   const answer = deck.questions[questionKey].answer;
 
+  console.log(answer, typeof answer);
   const getAnswer = () => {
-    return <Text>{question.answer ? "YES!" : "NO!"}</Text>;
+    return <Text>{answer ? "YES!" : "NO!"}</Text>;
   };
 
   const handleChoice = (choice) => {

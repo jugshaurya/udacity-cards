@@ -41,7 +41,7 @@ function reducer(state = INITIAL_STATE, action) {
     case actionTypes.ADD_DECK:
       return {
         ...state,
-        [action.payload.id]: action.payload,
+        [action.payload.id]: action.payload.deck,
       };
     // Add a new card
     case actionTypes.ADD_CARD:
