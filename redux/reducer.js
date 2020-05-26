@@ -5,12 +5,12 @@ const INITIAL_STATE = {
     title: "React",
     questions: [
       {
-        question: "React prefers Composition over Inheritance?",
-        answer: 1,
+        question: "What is React?",
+        answer: "A library for managing user interfaces",
       },
       {
-        question: "React and Redux are awesome together?",
-        answer: 1,
+        question: "Where do you make Ajax requests in React?",
+        answer: "The componentDidMount lifecycle event",
       },
     ],
   },
@@ -18,12 +18,9 @@ const INITIAL_STATE = {
     title: "JavaScript",
     questions: [
       {
-        question: "Javascript is Awesome?",
-        answer: 1,
-      },
-      {
-        question: "Technology is bad?",
-        answer: 0,
+        question: "What is a closure?",
+        answer:
+          "The combination of a function and the lexical environment within which that function was declared.",
       },
     ],
   },

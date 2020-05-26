@@ -19,12 +19,7 @@ class NewQuestionView extends React.Component {
   handleSubmit = () => {
     const { dispatch, navigation, route } = this.props;
     const { question, answer } = this.state;
-    if (
-      question.trim().length === 0 ||
-      answer.trim().length === 0 ||
-      answer.trim().length > 1 ||
-      (answer !== "1" && answer !== "0")
-    ) {
+    if (question.trim().length === 0 || answer.trim().length === 0) {
       return;
     }
 
@@ -32,7 +27,7 @@ class NewQuestionView extends React.Component {
     const questionDetails = {
       deckId,
       question,
-      answer: Number(answer),
+      answer,
     };
 
     dispatch(addCard(questionDetails));
@@ -50,15 +45,14 @@ class NewQuestionView extends React.Component {
             style={styles.textinput}
             onChangeText={(text) => this.setState({ question: text })}
             value={question}
-            placeholder={"Enter a Yes/No Question"}
+            placeholder={"Enter a Question"}
           />
           <Text style={styles.title}> Answer: </Text>
           <TextInput
             style={styles.textinput}
             onChangeText={(text) => this.setState({ answer: text })}
             value={answer}
-            keyboardType={"numeric"}
-            placeholder={"1 for true 0 for false"}
+            placeholder={"Enter a answer"}
           />
 
           <TouchableOpacity onPress={this.handleSubmit} style={styles.btn}>

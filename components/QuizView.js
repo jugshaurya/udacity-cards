@@ -20,6 +20,16 @@ const QuizView = ({ route, navigation }) => {
     await setLocalNotification();
   };
 
+  // move to scoreView to show no card found - if no questions are found!
+  if (totalQuestions === 0) {
+    navigation.navigate("ScoreView", {
+      score: correctAnswer,
+      totalQuestions,
+      deck: deck,
+    });
+    return null;
+  }
+
   // move to scoreView if all Questions are done!
   if (currentQuestion >= totalQuestions) {
     notificationHandler();
@@ -36,13 +46,8 @@ const QuizView = ({ route, navigation }) => {
   const question = deck.questions[questionKey].question;
   const answer = deck.questions[questionKey].answer;
 
-  const getAnswer = () => {
-    return <Text style={styles.question}>{answer ? "YES!" : "NO!"}</Text>;
-  };
-
   const handleChoice = (choice) => {
-    const result = choice === answer ? 1 : 0;
-    setCorrectAnswer(correctAnswer + result);
+    setCorrectAnswer(correctAnswer + choice);
     setWatch(false);
     setCurrentQuestion(currentQuestion + 1);
   };
@@ -50,46 +55,43 @@ const QuizView = ({ route, navigation }) => {
   return (
     <ScrollView style={{ flex: 1 }}>
       <View style={styles.outerBox}>
-        {totalQuestions < 0 ? (
-          <View>Sorry No Questions Found for this Deck!</View>
-        ) : (
-          <View>
-            <Text style={styles.questionRemain}>
-              {currentQuestion}/{totalQuestions}
-            </Text>
-            {watch === true ? (
-              getAnswer()
-            ) : (
-              <Text style={styles.question}>Q: {question}</Text>
-            )}
-            <TouchableOpacity
-              style={styles.btnWatch}
-              onPress={() => {
-                setWatch(!watch);
-              }}
-            >
-              {watch === true ? (
-                <Text>Watch Question</Text>
-              ) : (
-                <Text>Watch Answer</Text>
-              )}
-            </TouchableOpacity>
+        <Text style={styles.questionRemain}>
+          {currentQuestion}/{totalQuestions}
+        </Text>
 
-            <TouchableOpacity
-              style={[styles.btn, { backgroundColor: "#2bff3d" }]}
-              onPress={() => handleChoice(1)}
-            >
-              <Text>Correct</Text>
-            </TouchableOpacity>
+        <View style={styles.questionanswer}>
+          {watch === true ? (
+            <Text style={styles.question}>Ans: {answer}</Text>
+          ) : (
+            <Text style={styles.question}>Ques: {question}</Text>
+          )}
+        </View>
+        <TouchableOpacity
+          style={styles.btnWatch}
+          onPress={() => {
+            setWatch(!watch);
+          }}
+        >
+          {watch === true ? (
+            <Text>Watch Question</Text>
+          ) : (
+            <Text>Watch Answer</Text>
+          )}
+        </TouchableOpacity>
 
-            <TouchableOpacity
-              style={[styles.btn, { backgroundColor: "#f14857" }]}
-              onPress={() => handleChoice(0)}
-            >
-              <Text>Incorrect</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+        <TouchableOpacity
+          style={[styles.btn, { backgroundColor: "#2bff3d" }]}
+          onPress={() => handleChoice(1)}
+        >
+          <Text>Correct</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.btn, { backgroundColor: "#f14857" }]}
+          onPress={() => handleChoice(0)}
+        >
+          <Text>Incorrect</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -102,6 +104,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#364f6b",
     borderRadius: 20,
+  },
+  questionanswer: {
+    padding: 20,
+    borderWidth: 2,
+    borderColor: "black",
+    borderRadius: 20,
+    alignSelf: "flex-start",
   },
   questionRemain: {
     fontSize: 15,

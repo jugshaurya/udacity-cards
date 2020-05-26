@@ -15,21 +15,31 @@ const ScoreView = ({ route, navigation }) => {
   return (
     <View>
       <View style={styles.outerBox}>
-        <Text style={[styles.title, { fontSize: 15 }]}>
-          Score : {score} correct out of {totalQuestions}
-        </Text>
-        <Text style={[styles.title, { fontSize: 25 }]}>
-          Percentage : {percentage.toFixed(1)}%
-        </Text>
-        <TouchableOpacity onPress={handleStartQuiz} style={styles.btn}>
-          <Text>Restart Quiz</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleGoingToIndividualView}
-          style={styles.btn}
-        >
-          <Text>Back to Deck</Text>
-        </TouchableOpacity>
+        {totalQuestions >= 1 ? (
+          <View>
+            <Text style={[styles.title, { fontSize: 15 }]}>
+              Score : {score} correct out of {totalQuestions}
+            </Text>
+            <Text style={[styles.title, { fontSize: 25 }]}>
+              Percentage : {percentage.toFixed(1)}%
+            </Text>
+            <TouchableOpacity onPress={handleStartQuiz} style={styles.btn}>
+              <Text>Restart Quiz</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleGoingToIndividualView}
+              style={styles.btn}
+            >
+              <Text>Back to Deck</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View>
+            <Text style={styles.title}>
+              🙇 Sorry No Cards Found for this Deck! Hence No Quiz! 😍
+            </Text>
+          </View>
+        )}
       </View>
     </View>
   );
