@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     marginTop: 20,
-    fontSize: 10,
   },
   padding10: { padding: 10 },
   btn: {
