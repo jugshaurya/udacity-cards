@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { clearLocalNotification, setLocalNotification } from "../notification";
 import {
   View,
   Text,
@@ -14,8 +15,15 @@ const QuizView = ({ route, navigation }) => {
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const totalQuestions = deck.questions.length;
 
+  const notificationHandler = async () => {
+    await clearLocalNotification();
+    await setLocalNotification();
+  };
+
   // move to scoreView if all Questions are done!
   if (currentQuestion >= totalQuestions) {
+    notificationHandler();
+
     navigation.navigate("ScoreView", {
       score: correctAnswer,
       totalQuestions,

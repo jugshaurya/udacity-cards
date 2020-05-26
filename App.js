@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import { StatusBar } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import Constants from "expo-constants";
 import {
   MaterialCommunityIcons,
   Entypo,
@@ -12,9 +11,18 @@ import {
 import store from "./redux/store";
 import DeckListScreen from "./screens/DeckListScreen";
 import NewQuestionScreen from "./screens/NewQuestionScreen";
+import { setLocalNotification } from "./notification";
 
 const Tabs = createBottomTabNavigator();
+
 const App = () => {
+  useEffect(() => {
+    const setNotification = async () => {
+      await setLocalNotification();
+    };
+    setNotification();
+  }, [setLocalNotification]);
+
   return (
     <Provider store={store}>
       <StatusBar

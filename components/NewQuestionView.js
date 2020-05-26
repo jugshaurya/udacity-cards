@@ -19,9 +19,16 @@ class NewQuestionView extends React.Component {
   handleSubmit = () => {
     const { dispatch, navigation, route } = this.props;
     const { question, answer } = this.state;
-    if (question.trim().length === 0 || answer.trim().length === 0) return;
-    const deckId = route.params.deck.title;
+    if (
+      question.trim().length === 0 ||
+      answer.trim().length === 0 ||
+      answer.trim().length > 1 ||
+      (answer !== "1" && answer !== "0")
+    ) {
+      return;
+    }
 
+    const deckId = route.params.deck.title;
     const questionDetails = {
       deckId,
       question,
